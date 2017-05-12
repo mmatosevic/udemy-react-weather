@@ -7,11 +7,15 @@ var Title = React.createClass({
     },
     sendForm: function(e){
         e.preventDefault();
-        var name = this.refs.name.value;
-        this.refs.name.value = '';
-        this.setState({
-            text: name
-        });
+        var nameInput = this.refs.name;
+        var name = nameInput.value;
+        nameInput.value = '';
+
+        if (typeof name === 'string' && name.length > 0){
+            this.setState({
+                text: name
+            });
+        }
     },
     render: function() {
         return (
