@@ -8,6 +8,7 @@ var Title = React.createClass({
     sendForm: function(e){
         e.preventDefault();
         var name = this.refs.name.value;
+        this.refs.name.value = '';
         this.setState({
             text: name
         });
