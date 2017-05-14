@@ -4,6 +4,7 @@ var Title = React.createClass({
             <div>
                 <h2>ReactAPP</h2>
                 <p>{this.props.text}</p>
+                <p>{this.props.email}</p>
             </div>
         );
     }
@@ -15,12 +16,17 @@ var TextInput = React.createClass({
         var nameInput = this.refs.name;
         var name = nameInput.value;
         nameInput.value = '';
-        this.props.onNewName(name);
+
+        var emailInput = this.refs.email;
+        var email = emailInput.value;
+        emailInput.value = '';
+        this.props.onValueUpdate({name: name, email: email});
     },
     render: function() {
         return (
             <form onSubmit={this.submitText}>
                 <input type="text" ref="name"/>
+                <input type="text" ref="email"/>
                 <button>Send</button>
             </form>
         )
@@ -32,18 +38,22 @@ var Application = React.createClass({
         return {text: "Untitled"}
     },
     getInitialState: function() {
-        return {text: this.props.text}
+        return {
+            text: this.props.text,
+            email: ''
+        }
     },
-    handleNewName: function(name){
+    handleValueUpdate: function(values){
         this.setState({
-            text: name
+            text: values.name,
+            email: values.email
         });
     },
     render: function() {
         return (
             <div>
-                <Title text={this.state.text}/>
-                <TextInput onNewName={this.handleNewName}/>
+                <Title text={this.state.text} email={this.state.email}/>
+                <TextInput onValueUpdate={this.handleValueUpdate}/>
             </div>
         )
     }
