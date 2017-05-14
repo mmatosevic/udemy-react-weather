@@ -48,73 +48,8 @@
 
 	var React = __webpack_require__(1);
 	var ReactDOM = __webpack_require__(158);
-
-	var Title = React.createClass({
-	    displayName: 'Title',
-
-	    render: function render() {
-	        return React.createElement(
-	            'div',
-	            null,
-	            React.createElement(
-	                'h2',
-	                null,
-	                'ReactAPP'
-	            ),
-	            React.createElement(
-	                'p',
-	                null,
-	                this.props.text
-	            ),
-	            React.createElement(
-	                'p',
-	                null,
-	                this.props.email
-	            )
-	        );
-	    }
-	});
-
-	var TextInput = React.createClass({
-	    displayName: 'TextInput',
-
-	    submitText: function submitText(e) {
-	        e.preventDefault();
-	        var nameInput = this.refs.name;
-	        var name = nameInput.value;
-	        nameInput.value = '';
-
-	        var emailInput = this.refs.email;
-	        var email = emailInput.value;
-	        emailInput.value = '';
-	        this.props.onValueUpdate({ name: name, email: email });
-	    },
-	    render: function render() {
-	        return React.createElement(
-	            'form',
-	            { onSubmit: this.submitText },
-	            React.createElement(
-	                'div',
-	                null,
-	                React.createElement('input', { placeholder: 'Text', type: 'text', ref: 'name' })
-	            ),
-	            React.createElement(
-	                'div',
-	                null,
-	                React.createElement('input', { placeholder: 'Email', type: 'text', ref: 'email' })
-	            ),
-	            React.createElement(
-	                'div',
-	                null,
-	                React.createElement(
-	                    'button',
-	                    null,
-	                    'Send'
-	                )
-	            )
-	        );
-	    }
-	});
+	var TextInput = __webpack_require__(159);
+	var Title = __webpack_require__(160);
 
 	var Application = React.createClass({
 	    displayName: 'Application',
@@ -19839,6 +19774,93 @@
 
 	module.exports = __webpack_require__(3);
 
+
+/***/ },
+/* 159 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var React = __webpack_require__(1);
+
+	var TextInput = React.createClass({
+	    displayName: 'TextInput',
+
+	    submitText: function submitText(e) {
+	        e.preventDefault();
+	        var nameInput = this.refs.name;
+	        var name = nameInput.value;
+	        nameInput.value = '';
+
+	        var emailInput = this.refs.email;
+	        var email = emailInput.value;
+	        emailInput.value = '';
+	        this.props.onValueUpdate({ name: name, email: email });
+	    },
+	    render: function render() {
+	        return React.createElement(
+	            'form',
+	            { onSubmit: this.submitText },
+	            React.createElement(
+	                'div',
+	                null,
+	                React.createElement('input', { placeholder: 'Text', type: 'text', ref: 'name' })
+	            ),
+	            React.createElement(
+	                'div',
+	                null,
+	                React.createElement('input', { placeholder: 'Email', type: 'text', ref: 'email' })
+	            ),
+	            React.createElement(
+	                'div',
+	                null,
+	                React.createElement(
+	                    'button',
+	                    null,
+	                    'Send'
+	                )
+	            )
+	        );
+	    }
+	});
+
+	module.exports = TextInput;
+
+/***/ },
+/* 160 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var React = __webpack_require__(1);
+
+	var Title = React.createClass({
+	    displayName: 'Title',
+
+	    render: function render() {
+	        return React.createElement(
+	            'div',
+	            null,
+	            React.createElement(
+	                'h2',
+	                null,
+	                'ReactAPP'
+	            ),
+	            React.createElement(
+	                'p',
+	                null,
+	                this.props.text
+	            ),
+	            React.createElement(
+	                'p',
+	                null,
+	                this.props.email
+	            )
+	        );
+	    }
+	});
+
+	module.exports = Title;
 
 /***/ }
 /******/ ]);
