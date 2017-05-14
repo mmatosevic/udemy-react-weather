@@ -48,38 +48,9 @@
 
 	var React = __webpack_require__(1);
 	var ReactDOM = __webpack_require__(158);
-	var TextInput = __webpack_require__(159);
-	var Title = __webpack_require__(160);
+	var UserInfoSection = __webpack_require__(159);
 
-	var Application = React.createClass({
-	    displayName: 'Application',
-
-	    getDefaultProps: function getDefaultProps() {
-	        return { text: "Untitled" };
-	    },
-	    getInitialState: function getInitialState() {
-	        return {
-	            text: this.props.text,
-	            email: ''
-	        };
-	    },
-	    handleValueUpdate: function handleValueUpdate(values) {
-	        this.setState({
-	            text: values.name,
-	            email: values.email
-	        });
-	    },
-	    render: function render() {
-	        return React.createElement(
-	            'div',
-	            null,
-	            React.createElement(Title, { text: this.state.text, email: this.state.email }),
-	            React.createElement(TextInput, { onValueUpdate: this.handleValueUpdate })
-	        );
-	    }
-	});
-
-	ReactDOM.render(React.createElement(Application, { text: 'Those are mine titles!' }), document.getElementById('app'));
+	ReactDOM.render(React.createElement(UserInfoSection, { text: 'Those are mine titles!' }), document.getElementById('app'));
 
 /***/ },
 /* 1 */
@@ -19782,6 +19753,46 @@
 	'use strict';
 
 	var React = __webpack_require__(1);
+	var TextInput = __webpack_require__(160);
+	var Title = __webpack_require__(161);
+
+	var UserInfoSection = React.createClass({
+	    displayName: 'UserInfoSection',
+
+	    getDefaultProps: function getDefaultProps() {
+	        return { text: "Untitled" };
+	    },
+	    getInitialState: function getInitialState() {
+	        return {
+	            text: this.props.text,
+	            email: ''
+	        };
+	    },
+	    handleValueUpdate: function handleValueUpdate(values) {
+	        this.setState({
+	            text: values.name,
+	            email: values.email
+	        });
+	    },
+	    render: function render() {
+	        return React.createElement(
+	            'div',
+	            null,
+	            React.createElement(Title, { text: this.state.text, email: this.state.email }),
+	            React.createElement(TextInput, { onValueUpdate: this.handleValueUpdate })
+	        );
+	    }
+	});
+
+	module.exports = UserInfoSection;
+
+/***/ },
+/* 160 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var React = __webpack_require__(1);
 
 	var TextInput = React.createClass({
 	    displayName: 'TextInput',
@@ -19827,7 +19838,7 @@
 	module.exports = TextInput;
 
 /***/ },
-/* 160 */
+/* 161 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
