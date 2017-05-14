@@ -24844,20 +24844,74 @@
 	'use strict';
 
 	var React = __webpack_require__(1);
+	var Nav = __webpack_require__(217);
 
 	var Main = React.createClass({
 	    displayName: 'Main',
 
 	    render: function render() {
 	        return React.createElement(
-	            'h1',
+	            'div',
 	            null,
-	            'Main component'
+	            React.createElement(Nav, null),
+	            React.createElement(
+	                'h1',
+	                null,
+	                'Main component'
+	            )
 	        );
 	    }
 	});
 
 	module.exports = Main;
+
+/***/ },
+/* 217 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+
+	var React = __webpack_require__(1);
+
+	var Nav = React.createClass({
+	    displayName: "Nav",
+
+	    render: function render() {
+	        return React.createElement(
+	            "ul",
+	            null,
+	            React.createElement(
+	                "li",
+	                null,
+	                React.createElement(
+	                    "a",
+	                    { href: "#" },
+	                    "Home"
+	                )
+	            ),
+	            React.createElement(
+	                "li",
+	                null,
+	                React.createElement(
+	                    "a",
+	                    { href: "#" },
+	                    "About"
+	                )
+	            ),
+	            React.createElement(
+	                "li",
+	                null,
+	                React.createElement(
+	                    "a",
+	                    { href: "#" },
+	                    "Examples"
+	                )
+	            )
+	        );
+	    }
+	});
+
+	module.exports = Nav;
 
 /***/ }
 /******/ ]);
