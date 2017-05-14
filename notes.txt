@@ -1,0 +1,2 @@
+To automatically recomplile bundle on change run:
+webpack -w
