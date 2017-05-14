@@ -56,11 +56,20 @@
 	    hashHistory = _require.hashHistory;
 
 	var Main = __webpack_require__(216);
+	var Weather = __webpack_require__(218);
+	var About = __webpack_require__(219);
+	var Examples = __webpack_require__(220);
 
 	ReactDOM.render(React.createElement(
 	    Router,
 	    { history: hashHistory },
-	    React.createElement(Route, { path: '/', component: Main })
+	    React.createElement(
+	        Route,
+	        { path: '/', component: Main },
+	        React.createElement(IndexRoute, { component: Weather }),
+	        React.createElement(Route, { path: 'about', component: About }),
+	        React.createElement(Route, { path: 'examples', component: Examples })
+	    )
 	), document.getElementById('app'));
 
 /***/ },
@@ -24858,7 +24867,8 @@
 	                'h1',
 	                null,
 	                'Main component'
-	            )
+	            ),
+	            this.props.children
 	        );
 	    }
 	});
@@ -24869,42 +24879,45 @@
 /* 217 */
 /***/ function(module, exports, __webpack_require__) {
 
-	"use strict";
+	'use strict';
 
 	var React = __webpack_require__(1);
 
+	var _require = __webpack_require__(159),
+	    Link = _require.Link;
+
 	var Nav = React.createClass({
-	    displayName: "Nav",
+	    displayName: 'Nav',
 
 	    render: function render() {
 	        return React.createElement(
-	            "ul",
+	            'ul',
 	            null,
 	            React.createElement(
-	                "li",
+	                'li',
 	                null,
 	                React.createElement(
-	                    "a",
-	                    { href: "#" },
-	                    "Home"
+	                    Link,
+	                    { to: '/' },
+	                    'Weather'
 	                )
 	            ),
 	            React.createElement(
-	                "li",
+	                'li',
 	                null,
 	                React.createElement(
-	                    "a",
-	                    { href: "#" },
-	                    "About"
+	                    Link,
+	                    { to: '/about' },
+	                    'About'
 	                )
 	            ),
 	            React.createElement(
-	                "li",
+	                'li',
 	                null,
 	                React.createElement(
-	                    "a",
-	                    { href: "#" },
-	                    "Examples"
+	                    Link,
+	                    { to: '/examples' },
+	                    'Examples'
 	                )
 	            )
 	        );
@@ -24912,6 +24925,72 @@
 	});
 
 	module.exports = Nav;
+
+/***/ },
+/* 218 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var React = __webpack_require__(1);
+
+	var Weather = React.createClass({
+	    displayName: 'Weather',
+
+	    render: function render() {
+	        return React.createElement(
+	            'p',
+	            null,
+	            'Weather componenet'
+	        );
+	    }
+	});
+
+	module.exports = Weather;
+
+/***/ },
+/* 219 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var React = __webpack_require__(1);
+
+	var About = React.createClass({
+	    displayName: 'About',
+
+	    render: function render() {
+	        return React.createElement(
+	            'p',
+	            null,
+	            'About componenet'
+	        );
+	    }
+	});
+
+	module.exports = About;
+
+/***/ },
+/* 220 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var React = __webpack_require__(1);
+
+	var Examples = React.createClass({
+	    displayName: 'Examples',
+
+	    render: function render() {
+	        return React.createElement(
+	            'p',
+	            null,
+	            'Examples componenet'
+	        );
+	    }
+	});
+
+	module.exports = Examples;
 
 /***/ }
 /******/ ]);
