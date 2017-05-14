@@ -1,3 +1,6 @@
+var React = require('react');
+var ReactDOM = require('react-dom');
+
 var Title = React.createClass({
     render: function() {
         return (
@@ -25,9 +28,15 @@ var TextInput = React.createClass({
     render: function() {
         return (
             <form onSubmit={this.submitText}>
-                <input type="text" ref="name"/>
-                <input type="text" ref="email"/>
-                <button>Send</button>
+                <div>
+                    <input placeholder="Text" type="text" ref="name"/>
+                </div>
+                <div>
+                    <input placeholder="Email" type="text" ref="email"/>
+                </div>
+                <div>
+                    <button>Send</button>
+                </div>
             </form>
         )
     }
