@@ -25519,27 +25519,53 @@
 
 	    getInitialState: function getInitialState() {
 	        return {
-	            location: 'Zagreb',
-	            temp: 28
+	            isLoading: false
 	        };
 	    },
 	    handleLocationUpdate: function handleLocationUpdate(location) {
 	        var that = this;
+
+	        this.setState({
+	            isLoading: true
+	        });
+
 	        OpenWeatherMap.getTemp(location).then(function (temp) {
 	            that.setState({
 	                location: location,
-	                temp: temp
+	                temp: temp,
+	                isLoading: false
 	            });
 	        }, function (err) {
 	            alert(err);
+	            that.setState({
+	                isLoading: false
+	            });
 	        });
 	    },
 	    render: function render() {
+	        var _state = this.state,
+	            location = _state.location,
+	            temp = _state.temp,
+	            isLoading = _state.isLoading;
+
+
+	        function renderMessage() {
+	            if (isLoading) {
+	                return React.createElement(
+	                    'h3',
+	                    null,
+	                    'Fetching weather...'
+	                );
+	            } else if (temp && location) {
+	                return React.createElement(WeatherMessage, { location: location, temperature: temp });
+	            }
+	        }
+
 	        return React.createElement(
 	            'div',
 	            null,
 	            React.createElement(WeatherForm, { onLocationUpdate: this.handleLocationUpdate }),
-	            React.createElement(WeatherMessage, { location: this.state.location, temperature: this.state.temp })
+	            renderMessage()
 	        );
 	    }
 	});
