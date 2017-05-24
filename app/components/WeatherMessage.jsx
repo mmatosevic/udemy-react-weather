@@ -1,14 +1,12 @@
 var React = require('react');
 
-var WeatherMessage = React.createClass({
-    toCelsius: function(kelvin){
-        return kelvin - 273.15;
-    },
-    render: function() {
+var WeatherMessage = (props) => {
+        var toCelsius = function(kelvin){
+            return kelvin - 273.15;
+        };
         return(
-            <p>It's {this.toCelsius(this.props.temperature)}C in {this.props.location}</p>
+            <p>It's {toCelsius(props.temperature)}C in {props.location}</p>
         )
-    }
-});
+};
 
 module.exports = WeatherMessage;
