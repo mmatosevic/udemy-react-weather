@@ -1,11 +1,5 @@
 var React = require('react');
 
-var About = React.createClass({
-    render: function() {
-        return(
-            <p>About componenet</p>
-        )
-    }
-});
+var About = (props) => <p>About componenet stateless arrow</p>;
 
 module.exports = About;
