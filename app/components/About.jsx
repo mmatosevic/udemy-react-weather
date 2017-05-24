@@ -1,5 +1,5 @@
 var React = require('react');
 
-var About = (props) => <p>About componenet stateless arrow!</p>;
+var About = (props) => <div><p>About componenet stateless arrow!</p><p>None</p></div>;
 
 module.exports = About;
