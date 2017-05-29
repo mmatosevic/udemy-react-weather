@@ -2,8 +2,8 @@ var React = require('react');
 
 var About = (props) => 
     <div>
-        <p>About componenet stateless arrow!</p>
-        <p>None</p>
+        <h3>About</h3>
+        <p>Weather web application</p>
     </div>;
 
 module.exports = About;
