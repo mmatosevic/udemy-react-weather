@@ -28624,14 +28624,14 @@
 	        'div',
 	        null,
 	        React.createElement(
-	            'p',
+	            'h3',
 	            null,
-	            'About componenet stateless arrow!'
+	            'About'
 	        ),
 	        React.createElement(
 	            'p',
 	            null,
-	            'None'
+	            'Weather web application'
 	        )
 	    );
 	};
