@@ -28650,7 +28650,7 @@
 	  return React.createElement(
 	    'p',
 	    null,
-	    'Examples componenet'
+	    'Examples'
 	  );
 	};
 
