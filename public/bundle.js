@@ -24942,39 +24942,82 @@
 	    Link = _require.Link,
 	    IndexLink = _require.IndexLink;
 
-	var Nav = function Nav(props) {
-	    return React.createElement(
-	        'ul',
-	        null,
-	        React.createElement(
-	            'li',
-	            null,
+	var Nav = React.createClass({
+	    displayName: 'Nav',
+
+	    onSearch: function onSearch(e) {
+	        e.preventDefault();
+	        alert('not implemented');
+	    },
+	    render: function render() {
+	        return React.createElement(
+	            'div',
+	            { className: 'top-bar' },
 	            React.createElement(
-	                IndexLink,
-	                { activeClassName: 'active', activeStyle: { fontWeight: 'bold' }, to: '/' },
-	                'Weather'
-	            )
-	        ),
-	        React.createElement(
-	            'li',
-	            null,
+	                'div',
+	                { className: 'top-bar-left' },
+	                React.createElement(
+	                    'ul',
+	                    { className: 'menu' },
+	                    React.createElement(
+	                        'li',
+	                        { className: 'menu-text' },
+	                        'WeatherMan Turbo SmartApp'
+	                    ),
+	                    React.createElement(
+	                        'li',
+	                        null,
+	                        React.createElement(
+	                            IndexLink,
+	                            { activeClassName: 'active', activeStyle: { fontWeight: 'bold' }, to: '/' },
+	                            'Weather'
+	                        )
+	                    ),
+	                    React.createElement(
+	                        'li',
+	                        null,
+	                        React.createElement(
+	                            Link,
+	                            { activeClassName: 'active', activeStyle: { fontWeight: 'bold' }, to: '/about' },
+	                            'About'
+	                        )
+	                    ),
+	                    React.createElement(
+	                        'li',
+	                        null,
+	                        React.createElement(
+	                            Link,
+	                            { activeClassName: 'active', activeStyle: { fontWeight: 'bold' }, to: '/examples' },
+	                            'Examples'
+	                        )
+	                    )
+	                )
+	            ),
 	            React.createElement(
-	                Link,
-	                { activeClassName: 'active', activeStyle: { fontWeight: 'bold' }, to: '/about' },
-	                'About'
+	                'div',
+	                { className: 'top-bar-right' },
+	                React.createElement(
+	                    'form',
+	                    { onSubmit: this.onSearch },
+	                    React.createElement(
+	                        'ul',
+	                        { className: 'menu' },
+	                        React.createElement(
+	                            'li',
+	                            null,
+	                            React.createElement('input', { type: 'search', placeholder: 'Location' })
+	                        ),
+	                        React.createElement(
+	                            'li',
+	                            null,
+	                            React.createElement('input', { type: 'submit', className: 'button', value: 'Get weather' })
+	                        )
+	                    )
+	                )
 	            )
-	        ),
-	        React.createElement(
-	            'li',
-	            null,
-	            React.createElement(
-	                Link,
-	                { activeClassName: 'active', activeStyle: { fontWeight: 'bold' }, to: '/examples' },
-	                'Examples'
-	            )
-	        )
-	    );
-	};
+	        );
+	    }
+	});
 
 	module.exports = Nav;
 
