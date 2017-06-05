@@ -28720,23 +28720,24 @@
 /* 258 */
 /***/ function(module, exports, __webpack_require__) {
 
-	'use strict';
+	"use strict";
 
 	var React = __webpack_require__(8);
 
 	var About = function About(props) {
 	    return React.createElement(
-	        'div',
+	        "div",
 	        null,
 	        React.createElement(
-	            'h3',
-	            null,
-	            'About'
+	            "h1",
+	            { className: "text-center" },
+	            "About"
 	        ),
+	        React.createElement("img", { src: "img/badweather.png" }),
 	        React.createElement(
-	            'p',
-	            null,
-	            'Weather web application'
+	            "p",
+	            { className: "text-center" },
+	            "Weather web application"
 	        )
 	    );
 	};
