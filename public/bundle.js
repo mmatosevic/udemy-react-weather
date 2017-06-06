@@ -25074,7 +25074,7 @@
 	            if (isLoading) {
 	                return React.createElement(
 	                    'h3',
-	                    null,
+	                    { className: 'text-center' },
 	                    'Fetching weather...'
 	                );
 	            } else if (temp && location) {
@@ -25085,6 +25085,11 @@
 	        return React.createElement(
 	            'div',
 	            null,
+	            React.createElement(
+	                'h1',
+	                { className: 'text-center' },
+	                'Get Weather'
+	            ),
 	            React.createElement(WeatherForm, { onLocationUpdate: this.handleLocationUpdate }),
 	            renderMessage()
 	        );
@@ -25127,7 +25132,7 @@
 	                React.createElement('input', { type: 'text', ref: 'location' }),
 	                React.createElement(
 	                    'button',
-	                    null,
+	                    { className: 'button expanded hollow' },
 	                    'Get weather'
 	                )
 	            )
@@ -25141,7 +25146,7 @@
 /* 227 */
 /***/ function(module, exports, __webpack_require__) {
 
-	'use strict';
+	"use strict";
 
 	var React = __webpack_require__(8);
 
@@ -25153,11 +25158,11 @@
 	        return kelvin - 273.15;
 	    };
 	    return React.createElement(
-	        'p',
-	        null,
-	        'It\'s ',
+	        "p",
+	        { className: "text-center" },
+	        "It's ",
 	        toCelsius(temperature),
-	        'C in ',
+	        "C in ",
 	        location
 	    );
 	};

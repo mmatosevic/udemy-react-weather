@@ -5,7 +5,7 @@ var WeatherMessage = ({temperature, location}) => {
             return kelvin - 273.15;
         };
         return(
-            <p>It's {toCelsius(temperature)}C in {location}</p>
+            <p className="text-center">It's {toCelsius(temperature)}C in {location}</p>
         )
 };
 
