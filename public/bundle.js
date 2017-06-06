@@ -25034,6 +25034,7 @@
 	var WeatherForm = __webpack_require__(226);
 	var WeatherMessage = __webpack_require__(227);
 	var OpenWeatherMap = __webpack_require__(228);
+	var ErrorModal = __webpack_require__(265);
 
 	var Weather = React.createClass({
 	    displayName: 'Weather',
@@ -25047,7 +25048,8 @@
 	        var that = this;
 
 	        this.setState({
-	            isLoading: true
+	            isLoading: true,
+	            errorMessage: undefined
 	        });
 
 	        OpenWeatherMap.getTemp(location).then(function (temp) {
@@ -25057,9 +25059,9 @@
 	                isLoading: false
 	            });
 	        }, function (err) {
-	            alert(err);
 	            that.setState({
-	                isLoading: false
+	                isLoading: false,
+	                errorMessage: err.message
 	            });
 	        });
 	    },
@@ -25067,7 +25069,8 @@
 	        var _state = this.state,
 	            location = _state.location,
 	            temp = _state.temp,
-	            isLoading = _state.isLoading;
+	            isLoading = _state.isLoading,
+	            errorMessage = _state.errorMessage;
 
 
 	        function renderMessage() {
@@ -25082,6 +25085,12 @@
 	            }
 	        }
 
+	        function renderError() {
+	            if (errorMessage) {
+	                return React.createElement(ErrorModal, { message: errorMessage });
+	            }
+	        }
+
 	        return React.createElement(
 	            'div',
 	            null,
@@ -25091,7 +25100,8 @@
 	                'Get Weather'
 	            ),
 	            React.createElement(WeatherForm, { onLocationUpdate: this.handleLocationUpdate }),
-	            renderMessage()
+	            renderMessage(),
+	            renderError()
 	        );
 	    }
 	});
@@ -25188,12 +25198,12 @@
 
 	        return axios.get(requestUrl).then(function (res) {
 	            if (res.data.cod && res.data.message) {
-	                throw new Error(res.data.message);
+	                throw new Error("Unable tofetch weather info");
 	            } else {
 	                return res.data.main.temp;
 	            }
 	        }, function (res) {
-	            throw new Error(res.data.message);
+	            throw new Error("Unable tofetch weather info");
 	        });
 	    }
 	};
@@ -29159,6 +29169,61 @@
 			URL.revokeObjectURL(oldSrc);
 	}
 
+
+/***/ },
+/* 264 */,
+/* 265 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/* WEBPACK VAR INJECTION */(function($) {'use strict';
+
+	var React = __webpack_require__(8);
+
+	var ErrorModal = React.createClass({
+	    displayName: 'ErrorModal',
+
+	    getDefaultProps: function getDefaultProps() {
+	        return {
+	            title: "Error"
+	        };
+	    },
+	    propTypes: {
+	        title: React.PropTypes.string,
+	        message: React.PropTypes.string.isRequired
+	    },
+	    componentDidMount: function componentDidMount() {
+	        var modal = new Foundation.Reveal($('#error-modal'));
+	        modal.open();
+	    },
+	    render: function render() {
+	        var _props = this.props,
+	            title = _props.title,
+	            message = _props.message;
+
+	        return React.createElement(
+	            'div',
+	            { id: 'error-modal', className: 'reveal tiny text-center', 'data-reveal': '' },
+	            React.createElement(
+	                'h4',
+	                null,
+	                title
+	            ),
+	            React.createElement(
+	                'p',
+	                null,
+	                message
+	            ),
+	            React.createElement(
+	                'button',
+	                { className: 'button hollow', 'data-close': '' },
+	                'OK'
+	            )
+	        );
+	    }
+	});
+
+	module.exports = ErrorModal;
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(7)))
 
 /***/ }
 /******/ ]);
