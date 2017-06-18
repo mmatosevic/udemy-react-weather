@@ -24953,7 +24953,13 @@
 
 	    onSearch: function onSearch(e) {
 	        e.preventDefault();
-	        alert('not implemented');
+	        var loc = this.refs.location.value;
+	        var encodedLocation = encodeURIComponent(loc);
+
+	        if (loc.length > 0) {
+	            this.refs.location.value = '';
+	            window.location.hash = '#/?location=' + encodedLocation;
+	        }
 	    },
 	    render: function render() {
 	        return React.createElement(
@@ -25011,7 +25017,7 @@
 	                        React.createElement(
 	                            'li',
 	                            null,
-	                            React.createElement('input', { type: 'search', placeholder: 'Location' })
+	                            React.createElement('input', { type: 'search', placeholder: 'Location', ref: 'location' })
 	                        ),
 	                        React.createElement(
 	                            'li',
@@ -25052,7 +25058,9 @@
 
 	        this.setState({
 	            isLoading: true,
-	            errorMessage: undefined
+	            errorMessage: undefined,
+	            location: undefined,
+	            temp: undefined
 	        });
 
 	        OpenWeatherMap.getTemp(location).then(function (temp) {
@@ -25067,6 +25075,20 @@
 	                errorMessage: err.message
 	            });
 	        });
+	    },
+	    componentDidMount: function componentDidMount() {
+	        var loc = this.props.location.query.location;
+	        if (loc) {
+	            this.handleLocationUpdate(loc);
+	            window.location.hash = '#/';
+	        }
+	    },
+	    componentWillReceiveProps: function componentWillReceiveProps(newProps) {
+	        var loc = newProps.location.query.location;
+	        if (loc) {
+	            this.handleLocationUpdate(loc);
+	            window.location.hash = '#/';
+	        }
 	    },
 	    render: function render() {
 	        var _state = this.state,
